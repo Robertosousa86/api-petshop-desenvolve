@@ -1,4 +1,4 @@
-const app = require('./index');
+const app = require('./app');
 
 try {
   app.listen(3000, () => {
