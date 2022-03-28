@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Robertosousa86/api-petshop-desenvolve/issues"
   },
-  "homepage": "https://github.com/Robertosousa86/api-petshop-desenvolve#readme"
+  "homepage": "https://github.com/Robertosousa86/api-petshop-desenvolve#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
