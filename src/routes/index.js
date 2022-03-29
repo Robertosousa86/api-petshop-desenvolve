@@ -1,9 +1,9 @@
 const express = require('express');
 
+const customerServiceRoute = require('./customerService');
+
 const router = express.Router();
 
-router.get('/atendimentos', (req, res) => {
-  res.status(200).send('Rota de atendimentos realizando GET');
-});
+router.use('/atendimentos', customerServiceRoute);
 
 module.exports = router;
