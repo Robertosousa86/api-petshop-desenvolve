@@ -1,14 +1,16 @@
 const setupApp = require('./app');
 require('dotenv').config();
 
+const connectionConfig = require('./config/connection');
+
+connectionConfig.connect((err) => {
+  if (err) return console.error(err);
+});
+
 const PORT = process.env.PORT;
 
-try {
-  const app = setupApp();
+const app = setupApp();
 
-  app.listen(PORT, () => {
-    console.log(`🏁 Servidor rodando na porta http://localhost:${PORT}`);
-  });
-} catch (err) {
-  console.error(err);
-}
+app.listen(PORT, () => {
+  console.log(`🏁 Servidor rodando na porta http://localhost:${PORT}`);
+});
