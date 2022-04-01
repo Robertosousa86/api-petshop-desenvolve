@@ -6,6 +6,8 @@ const router = express.Router();
 
 const customerServiceController = new CustomerServiceController();
 
-router.get('/', (req, res) => customerServiceController.get(req, res));
+router.get('/', (req, res) =>
+  customerServiceController.getAttendance(req, res)
+);
 
 module.exports = router;
