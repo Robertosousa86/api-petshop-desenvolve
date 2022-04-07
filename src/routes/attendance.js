@@ -7,5 +7,6 @@ const router = express.Router();
 const attendanceController = new AttendanceController();
 
 router.get('/', (req, res) => attendanceController.getAttendance(req, res));
+router.post('/', (req, res) => attendanceController.postAttendance(req, res));
 
 module.exports = router;
