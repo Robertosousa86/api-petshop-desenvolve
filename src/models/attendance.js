@@ -7,6 +7,29 @@ class Attendance {
     const date = moment(attendance.date, 'DD/MM/YYYY').format(
       'YYYY-MM-DD HH:mm:ss'
     );
+
+    const validDate = moment(date).isSameOrAfter(creationDate);
+    const validClient = attendance.client.length >= 5;
+
+    const validations = [
+      {
+        name: 'date',
+        valid: validDate,
+        message:
+          'A data de agendamento deve ser posterior ou igual a data atual',
+      },
+      {
+        name: 'client',
+        valid: validClient,
+        message: 'O nome do(a) cliente deve ter mais do que 5 caracteres',
+      },
+    ];
+
+    const errors = validations.filter((element) => !element.valid);
+    const containsErrors = errors.length;
+
+    if (containsErrors) return res.status(400).json(errors);
+
     const datedService = { ...attendance, creationDate, date };
 
     const sql = 'INSERT INTO Atendimentos SET ?';
