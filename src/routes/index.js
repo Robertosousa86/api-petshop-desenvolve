@@ -1,9 +1,9 @@
 const express = require('express');
 
-const customerServiceRoute = require('./customerService');
+const attendanceRoute = require('./attendance');
 
 const router = express.Router();
 
-router.use('/atendimentos', customerServiceRoute);
+router.use('/atendimentos', attendanceRoute);
 
 module.exports = router;
