@@ -11,6 +11,16 @@ class AttendanceController {
     }
   }
 
+  getAttendanceById(req, res) {
+    try {
+      const id = parseInt(req.params.id);
+
+      Attendance.listById(id, res);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   postAttendance(req, res) {
     try {
       const attendance = req.body;

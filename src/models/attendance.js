@@ -46,6 +46,14 @@ class Attendance {
       err ? res.status(400).json(err) : res.status(201).json(data);
     });
   }
+
+  listById(id, res) {
+    const sql = `SELECT * FROM Atendimento WHERE id=${id}`;
+
+    connection.query(sql, (err, data) => {
+      err ? res.status(400).json(err) : res.status(201).json(data);
+    });
+  }
 }
 
 module.exports = new Attendance();
