@@ -40,7 +40,7 @@ class Attendance {
   }
 
   list(req, res) {
-    const sql = 'SELECT * FROM Atendimento';
+    const sql = 'SELECT * FROM Atendimentos';
 
     connection.query(sql, (err, data) => {
       err ? res.status(400).json(err) : res.status(201).json(data);
@@ -48,7 +48,7 @@ class Attendance {
   }
 
   listById(id, res) {
-    const sql = `SELECT * FROM Atendimento WHERE id=${id}`;
+    const sql = `SELECT * FROM Atendimentos WHERE id=${id}`;
 
     connection.query(sql, (err, data) => {
       err ? res.status(400).json(err) : res.status(201).json(data);
@@ -56,7 +56,7 @@ class Attendance {
   }
 
   update(id, value, res) {
-    const sql = 'UPDATE Atendimento SET ? WHERE id=?';
+    const sql = 'UPDATE Atendimentos SET ? WHERE id=?';
 
     if (value.date)
       value.date = moment(attendance.date, 'DD/MM/YYYY').format(
@@ -64,6 +64,14 @@ class Attendance {
       );
 
     connection.query(sql, [value, id], (err, data) => {
+      err ? res.status(400).json(err) : res.status(201).json(data);
+    });
+  }
+
+  remove(id, res) {
+    const sql = 'DELETE FROM atendimentos WHERE id=?';
+
+    connection.query(sql, id, (err, data) => {
       err ? res.status(400).json(err) : res.status(201).json(data);
     });
   }
