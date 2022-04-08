@@ -32,6 +32,14 @@ class AttendanceController {
       console.error(err);
     }
   }
+
+  patchAttendance(req, res) {
+    const id = parseInt(req.params.id);
+
+    const value = req.body;
+
+    Attendance.updating(id, value, res);
+  }
 }
 
 module.exports = AttendanceController;
