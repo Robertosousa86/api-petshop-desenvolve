@@ -54,6 +54,19 @@ class Attendance {
       err ? res.status(400).json(err) : res.status(201).json(data);
     });
   }
+
+  update(id, value, res) {
+    const sql = 'UPDATE Atendimento SET ? WHERE id=?';
+
+    if (value.date)
+      value.date = moment(attendance.date, 'DD/MM/YYYY').format(
+        'YYYY-MM-DD HH:mm:ss'
+      );
+
+    connection.query(sql, [value, id], (err, data) => {
+      err ? res.status(400).json(err) : res.status(201).json(data);
+    });
+  }
 }
 
 module.exports = new Attendance();
