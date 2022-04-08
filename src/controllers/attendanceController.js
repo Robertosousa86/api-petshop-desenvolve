@@ -40,6 +40,12 @@ class AttendanceController {
 
     Attendance.updating(id, value, res);
   }
+
+  deleteAttendance(req, res) {
+    const id = parseInt(req.params.id);
+
+    Attendance.remove(id, res);
+  }
 }
 
 module.exports = AttendanceController;
